@@ -44,24 +44,31 @@ public class Questionnaire extends AppCompatActivity {
 
         sharedPreferences = getBaseContext().getSharedPreferences(PREFS, MODE_PRIVATE);
         int idUser =   sharedPreferences.getInt(PREFS_IDUSER,0);
-
         String background_url = "http://sahajamaya.ovh/wsmobile/img/";
+
         Random randomBg = new Random();
+
         String random_background = background_url+"i"+(randomBg.nextInt(10)+1)+".jpg";
+
         System.out.println(random_background);
+
         Context context = getBaseContext();
+
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearQ);
+
+        //AsyncTask middleware pour les transactions background
         ImageAsync myDownloader = new ImageAsync();
+
         try {
+            //executer asynctask et recuperer l'image
             Drawable mDrawable = new BitmapDrawable(getResources(),myDownloader.execute(random_background).get());
+            //afficher l'image
             linearLayout.setBackground(mDrawable);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         };
-
-
 
 
         String url ="http://sahajamaya.ovh/wsmobile/v2/updateCounter.php?user_id="+idUser;
@@ -113,6 +120,7 @@ public class Questionnaire extends AppCompatActivity {
 
 
     }
+
     public class ImageAsync extends AsyncTask<String,Void,Bitmap>
     {
         @Override
