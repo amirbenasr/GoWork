@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Go Work</string>
+    <array name="etude">
+        <item>Universitaire</item>
+        <item>Secondaire</item>
+    </array>
+
+    <array name="sexe">
+        <item>Mr</item>
+        <item>Mlle</item>
+        <item>Mme</item>
+    </array>
+
+    <array name="lieux">
+        <item>ARIANA</item>
+        <item>BEJA</item>
+        <item>BIZERTE</item>
+        <item>GABES</item>
+        <item>GAFSA</item>
+        <item>JENDOUBA</item>
+        <item>KAIROUAN</item>
+        <item>KASSERINE</item>
+        <item>KEBLI</item>
+        <item>LE KEF</item>
+        <item>MAHDIA</item>
+        <item>MANOUBA</item>
+        <item>MEDENINE</item>
+        <item>MONASTIR</item>
+        <item>NABEUL</item>
+        <item>SFAX</item>
+        <item>SIDI BOUZID</item>
+        <item>SILIANA</item>
+        <item>SOUSSE</item>
+        <item>TATOUINE</item>
+        <item>TOUZER</item>
+        <item>TUNIS</item>
+        <item>ZAGHOUAN</item>
+        <item>BEN AROUS</item>
+    </array>
+</resources>

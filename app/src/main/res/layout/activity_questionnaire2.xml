@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+
+            android:adjustViewBounds="true"
+            android:layout_margin="0dp"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+
+
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/background_img2">
+
+    </ImageView>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  tools:context=".Questionnaire2"
+                  android:orientation="vertical"
+                  android:padding="20dp"
+                  android:id="@+id/linearQ"
+
+                  android:gravity="center"
+                  android:background="@color/back1">
+
+
+        <TextView
+                android:id="@+id/textquestionnaire2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/noir"
+                android:textAlignment="center"
+        />
+
+
+        <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="30"
+                android:gravity="center">
+
+            <Button
+                    android:id="@+id/oui2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:textColor="@color/blanc"
+                    android:textSize="16sp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="oui"/>
+
+            <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"/>
+
+            <Button
+                    android:id="@+id/non2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:textColor="@color/blanc"
+                    android:textSize="16sp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="non"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

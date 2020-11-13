@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@color/back1">
+
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIGN UP"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Spinner
+            android:id="@+id/Sgenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/sexe"></Spinner>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/Snom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrer votre nom"
+            android:paddingLeft="12dp"
+            android:inputType="text"
+            android:textSize="20sp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/Sprenom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrer votre prenom"
+            android:paddingLeft="12dp"
+            android:inputType="text"
+            android:textSize="20sp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/Semail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrer votre email"
+            android:paddingLeft="12dp"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Spinner
+            android:id="@+id/Slieux"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/lieux"></Spinner>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/Sphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrer votre numero de telephone"
+            android:paddingLeft="12dp"
+            android:textSize="20sp"
+            android:inputType="number"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/Sdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrer votre date de naissance"
+            android:paddingLeft="12dp"
+            android:textSize="20sp"
+            android:inputType="date"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Spinner
+            android:id="@+id/Setude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/etude"
+            android:layout_marginTop="15dp"></Spinner>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+
+        <EditText
+            android:id="@+id/Spass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrer votre passowrd"
+            android:inputType="textPassword"
+            android:paddingLeft="12dp"
+            android:textSize="20sp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/Scnfpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="confirmer password"
+            android:inputType="textPassword"
+            android:paddingLeft="12dp"
+            android:textSize="20sp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <Button
+            android:id="@+id/Sbtn"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:text="Valider"
+            android:textColor="@color/blanc"
+            android:textSize="20sp"
+            android:background="@color/colorPrimaryDark"/>
+
+
+    </LinearLayout>
+
+    </ScrollView>

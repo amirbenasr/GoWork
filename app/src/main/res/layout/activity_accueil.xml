@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Accueil"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/back1">
+
+
+    <TextView
+        android:id="@+id/txtaccueil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/noir"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/btnsondage"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Sondage"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/blanc"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:layout_marginTop="50dp"/>
+
+    <Button
+        android:id="@+id/btnquestion"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Questionnaire"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/blanc"
+        android:textSize="20sp"
+        android:textAllCaps="false"/>
+
+
+</LinearLayout>
