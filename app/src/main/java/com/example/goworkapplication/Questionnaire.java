@@ -121,6 +121,7 @@ public class Questionnaire extends AppCompatActivity {
 
     }
 
+    ///ImageAsync class pour executer les fonctionalités en background
     public class ImageAsync extends AsyncTask<String,Void,Bitmap>
     {
         @Override
