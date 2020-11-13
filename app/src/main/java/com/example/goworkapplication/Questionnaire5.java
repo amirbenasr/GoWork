@@ -3,8 +3,10 @@ package com.example.goworkapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 public class Questionnaire5 extends AppCompatActivity {
 
@@ -35,22 +38,33 @@ public class Questionnaire5 extends AppCompatActivity {
         int idUser =   sharedPreferences.getInt(PREFS_IDUSER,0);
         String url ="http://sahajamaya.ovh/wsmobile/v2/updateCounter.php?user_id="+idUser;
 
-       ///
+        ///function to load random image
+
         String background_url = "http://sahajamaya.ovh/wsmobile/img/";
+
         Random randomBg = new Random();
+
         String random_background = background_url+"i"+(randomBg.nextInt(10)+1)+".jpg";
+
         System.out.println(random_background);
+
         Context context = getBaseContext();
+
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearQ);
 
-        Drawable mDrawable = new BitmapDrawable(getResources(), function_image.getBitmapFromURL(random_background));
-        linearLayout.setBackground(mDrawable);
-        ImageView imageView= findViewById(R.id.background_img5);
-        Ion.with(context)
-                .load(random_background)
-                .withBitmap()
-                .intoImageView(imageView);
+        //AsyncTask middleware pour les transactions background
+        ImageAsync myDownloader = new ImageAsync();
 
+        try {
+            //executer asynctask et recuperer l'image
+            Drawable mDrawable = new BitmapDrawable(getResources(),myDownloader.execute(random_background).get());
+            //afficher l'image
+            linearLayout.setBackground(mDrawable);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        };
 
         Ion.with(Questionnaire5.this)
                 .load(url)
@@ -97,7 +111,35 @@ public class Questionnaire5 extends AppCompatActivity {
     }
 
 
+    ///ImageAsync class pour executer les fonctionalités en background
+    public class ImageAsync extends AsyncTask<String,Void, Bitmap>
+    {
+        @Override
+        protected void onPreExecute() {
+            // Show progress dialog
+            super.onPreExecute();
+        }
 
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            //Populate Ui
+            super.onPostExecute(bitmap);
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+
+            return  function_image.getBitmapFromURL(params[0]);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            // Show progress update
+            super.onProgressUpdate(values);
+        }
+
+
+    }
     public  void GetAllQuestion(int it )
     {
         String url="http://sahajamaya.ovh/wsmobile/v2/getQuestion.php?idquestion="+it;
