@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 public class Questionnaire2 extends AppCompatActivity {
     ArrayList<QuestionnaireClass> arrayList = new ArrayList<>();
@@ -46,20 +48,31 @@ public class Questionnaire2 extends AppCompatActivity {
     ///function to load random image
 
         String background_url = "http://sahajamaya.ovh/wsmobile/img/";
+
         Random randomBg = new Random();
+
         String random_background = background_url+"i"+(randomBg.nextInt(10)+1)+".jpg";
+
         System.out.println(random_background);
+
         Context context = getBaseContext();
+
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearQ);
 
+        //AsyncTask middleware pour les transactions background
+        ImageAsync myDownloader = new ImageAsync();
 
-        Drawable mDrawable = new BitmapDrawable(getResources(), function_image.getBitmapFromURL(random_background));
-        linearLayout.setBackground(mDrawable);
-        ImageView imageView= findViewById(R.id.background_img2);
-        Ion.with(context)
-                .load(random_background)
-                .withBitmap()
-                .intoImageView(imageView);
+        try {
+            //executer asynctask et recuperer l'image
+            Drawable mDrawable = new BitmapDrawable(getResources(),myDownloader.execute(random_background).get());
+            //afficher l'image
+            linearLayout.setBackground(mDrawable);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        };
+
         String url ="http://sahajamaya.ovh/wsmobile/v2/updateCounter.php?user_id="+idUser;
         Ion.with(Questionnaire2.this)
                 .load(url)
@@ -120,6 +133,35 @@ public class Questionnaire2 extends AppCompatActivity {
         }
     }
 
+    ///ImageAsync class pour executer les fonctionalités en background
+    public class ImageAsync extends AsyncTask<String,Void,Bitmap>
+    {
+        @Override
+        protected void onPreExecute() {
+            // Show progress dialog
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            //Populate Ui
+            super.onPostExecute(bitmap);
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+
+            return  function_image.getBitmapFromURL(params[0]);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            // Show progress update
+            super.onProgressUpdate(values);
+        }
+
+
+    }
 
 
     public  void GetAllQuestion(int it)
